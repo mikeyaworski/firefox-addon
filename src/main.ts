@@ -28,13 +28,18 @@ async function updateExistingAddon(uuid: string, xpiPath: string, version: strin
     version
   )}/`;
   core.debug(`URL: ${uri}`);
-  const response = await axios.put(uri, body, {
-    headers: {
-      ...body.getHeaders(),
-      Authorization: `JWT ${token}`
-    }
-  });
-  core.debug(`Response: ${JSON.stringify(response.data)}`);
+  try {
+    const response = await axios.put(uri, body, {
+      headers: {
+        ...body.getHeaders(),
+        Authorization: `JWT ${token}`
+      }
+    });
+    core.debug(`Response: ${JSON.stringify(response.data)}`);
+  } catch (err) {
+    core.debug(`Error response: ${JSON.stringify(err.response.data)}`);
+    throw err;
+  }
 }
 
 async function createNewAddon(xpiPath: string, version: string, token: string) {
