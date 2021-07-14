@@ -1,6 +1,9 @@
-name: 'Firefox Addon Action'
+name: 'Firefox Extension Action'
 description: 'Upload your addon to Firefox'
 author: 'Thomas McNiven'
+branding:
+  icon: 'upload-cloud'
+  color: 'green'
 inputs:
   uuid:
     description: 'Your addons UUID as defined by Mozilla'
