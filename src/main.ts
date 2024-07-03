@@ -37,6 +37,7 @@ async function updateExistingAddon(uuid: string, xpiPath: string, version: strin
     });
     core.debug(`Response: ${JSON.stringify(response.data)}`);
   } catch (err) {
+    // @ts-expect-error
     core.debug(`Error response: ${JSON.stringify(err.response.data)}`);
     throw err;
   }
@@ -84,6 +85,7 @@ async function run() {
     const token = generateJWT(key, secret);
     await sendRequest(uuid, path, manifest, token);
   } catch (error) {
+    // @ts-expect-error
     core.setFailed(error.message);
   }
 }

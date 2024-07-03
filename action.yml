@@ -16,5 +16,5 @@ inputs:
   api-secret:
     description: 'Firefox Addon API Secret'
 runs:
-  using: 'node12'
+  using: 'node20'
   main: 'dist/index.js'
